@@ -1,86 +1,59 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Linux (x86_64)
---
--- Host: localhost    Database: adventureworks
--- ------------------------------------------------------
--- Server version	8.0.23-0ubuntu0.20.04.1
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `dbo.awbuildversion`
---
-
 DROP TABLE IF EXISTS `dbo.awbuildversion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE "dbo.awbuildversion" (
-  SystemInformationID int DEFAULT NULL,
-  "Database Version" varchar(25) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  VersionDate timestamp NULL DEFAULT NULL,
-  ModifiedDate timestamp NULL DEFAULT NULL
-);
-
 CREATE TABLE "dbo.awbuildversion" (
   SystemInformationID int DEFAULT NULL,
   "Database Version" varchar(25) DEFAULT NULL,
   VersionDate timestamp NULL DEFAULT NULL,
   ModifiedDate timestamp NULL DEFAULT NULL
 );
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `dbo.databaselog`
 --
 
-DROP TABLE IF EXISTS `dbo.databaselog`;
+DROP TABLE IF EXISTS "dbo.databaselog";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `dbo.databaselog` (
+CREATE TABLE "dbo.databaselog" (
   `DatabaseLogID` int DEFAULT NULL,
   `PostTime` timestamp NULL DEFAULT NULL,
-  `DatabaseUser` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `Event` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `Schema` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `Object` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `TSQL` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
-  `XmlEvent` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  `DatabaseUser` varchar(128) DEFAULT NULL,
+  `Event` varchar(128) DEFAULT NULL,
+  `Schema` varchar(128) DEFAULT NULL,
+  `Object` varchar(128) DEFAULT NULL,
+  `TSQL` longtext,
+  `XmlEvent` longtext 
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `dbo.errorlog`
 --
 
-DROP TABLE IF EXISTS `dbo.errorlog`;
+DROP TABLE IF EXISTS "dbo.errorlog";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `dbo.errorlog` (
-  `ErrorLogID` int DEFAULT NULL,
-  `ErrorTime` timestamp NULL DEFAULT NULL,
-  `UserName` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `ErrorNumber` int DEFAULT NULL,
-  `ErrorSeverity` int DEFAULT NULL,
-  `ErrorState` int DEFAULT NULL,
-  `ErrorProcedure` varchar(126) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `ErrorLine` int DEFAULT NULL,
-  `ErrorMessage` varchar(4000) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE "dbo.errorlog" (
+  ErrorLogID int DEFAULT NULL,
+  ErrorTime timestamp NULL DEFAULT NULL,
+  UserName varchar(128) DEFAULT NULL,
+  ErrorNumber int DEFAULT NULL,
+  ErrorSeverity int DEFAULT NULL,
+  ErrorState int DEFAULT NULL,
+  ErrorProcedure varchar(126) DEFAULT NULL,
+  ErrorLine int DEFAULT NULL,
+  ErrorMessage varchar(4000)  DEFAULT NULL
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `humanresources.department`
 --
 
-DROP TABLE IF EXISTS `humanresources.department`;
+DROP TABLE IF EXISTS "humanresources.department";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE "humanresources.department" (
@@ -95,66 +68,66 @@ CREATE TABLE "humanresources.department" (
 -- Table structure for table `humanresources.employee`
 --
 
-DROP TABLE IF EXISTS `humanresources.employee`;
+DROP TABLE IF EXISTS "humanresources.employee";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `humanresources.employee` (
-  `BusinessEntityID` int DEFAULT NULL,
-  `NationalIDNumber` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `LoginID` varchar(256) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `OrganizationNode` blob,
-  `OrganizationLevel` smallint DEFAULT NULL,
-  `JobTitle` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `BirthDate` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `MaritalStatus` char(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `Gender` char(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `HireDate` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `SalariedFlag` tinyint(1) DEFAULT NULL,
-  `VacationHours` smallint DEFAULT NULL,
-  `SickLeaveHours` smallint DEFAULT NULL,
-  `CurrentFlag` tinyint(1) DEFAULT NULL,
-  `rowguid` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
-  `ModifiedDate` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE "humanresources.employee" (
+  BusinessEntityID int DEFAULT NULL,
+  NationalIDNumber varchar(15) DEFAULT NULL,
+  LoginID varchar(256) DEFAULT NULL,
+  OrganizationNode blob,
+  OrganizationLevel smallint DEFAULT NULL,
+  JobTitle varchar(50) DEFAULT NULL,
+  BirthDate varchar(10) DEFAULT NULL,
+  MaritalStatus char(1) DEFAULT NULL,
+  Gender char(1) DEFAULT NULL,
+  HireDate varchar(10) DEFAULT NULL,
+  SalariedFlag tinyint(1) DEFAULT NULL,
+  VacationHours smallint DEFAULT NULL,
+  SickLeaveHours smallint DEFAULT NULL,
+  CurrentFlag tinyint(1) DEFAULT NULL,
+  rowguid longtext
+  ModifiedDate timestamp NULL DEFAULT NULL
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `humanresources.employeedepartmenthistory`
 --
 
-DROP TABLE IF EXISTS `humanresources.employeedepartmenthistory`;
+DROP TABLE IF EXISTS "humanresources.employeedepartmenthistory";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `humanresources.employeedepartmenthistory` (
-  `BusinessEntityID` int DEFAULT NULL,
-  `DepartmentID` smallint DEFAULT NULL,
-  `ShiftID` int DEFAULT NULL,
-  `StartDate` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `EndDate` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `ModifiedDate` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE "humanresources.employeedepartmenthistory" (
+  BusinessEntityID int DEFAULT NULL,
+  DepartmentID smallint DEFAULT NULL,
+  ShiftID int DEFAULT NULL,
+  StartDate varchar(10) DEFAULT NULL,
+  EndDate varchar(10) DEFAULT NULL,
+  ModifiedDate timestamp NULL DEFAULT NULL
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `humanresources.jobcandidate`
 --
 
-DROP TABLE IF EXISTS `humanresources.jobcandidate`;
+DROP TABLE IF EXISTS "humanresources.jobcandidate";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `humanresources.jobcandidate` (
-  `JobCandidateID` int DEFAULT NULL,
-  `BusinessEntityID` int DEFAULT NULL,
-  `Resume` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
-  `ModifiedDate` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE "humanresources.jobcandidate" (
+  JobCandidateID int DEFAULT NULL,
+  BusinessEntityID int DEFAULT NULL,
+  Resume longtext,
+  ModifiedDate timestamp NULL DEFAULT NULL
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `humanresources.shift`
 --
 
-DROP TABLE IF EXISTS `humanresources.shift`;
+DROP TABLE IF EXISTS "humanresources.shift";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `humanresources.shift` (
