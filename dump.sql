@@ -130,89 +130,89 @@ CREATE TABLE "humanresources.jobcandidate" (
 DROP TABLE IF EXISTS "humanresources.shift";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `humanresources.shift` (
-  `ShiftID` int DEFAULT NULL,
-  `Name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `StartTime` varchar(16) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `EndTime` varchar(16) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `ModifiedDate` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE "humanresources.shift" (
+  ShiftID int DEFAULT NULL,
+  Name varchar(50) DEFAULT NULL,
+  StartTime varchar(16) DEFAULT NULL,
+  EndTime varchar(16) DEFAULT NULL,
+  ModifiedDate timestamp NULL DEFAULT NULL
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `person.address`
 --
 
-DROP TABLE IF EXISTS `person.address`;
+DROP TABLE IF EXISTS "person.address";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `person.address` (
-  `AddressID` int DEFAULT NULL,
-  `AddressLine1` varchar(60) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `AddressLine2` varchar(60) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `City` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `StateProvinceID` int DEFAULT NULL,
-  `PostalCode` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `SpatialLocation` longblob,
-  `rowguid` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
-  `ModifiedDate` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE "person.address" (
+  AddressID int DEFAULT NULL,
+  AddressLine1 varchar(60) DEFAULT NULL,
+  AddressLine2 varchar(60) DEFAULT NULL,
+  City varchar(30) DEFAULT NULL,
+  StateProvinceID int DEFAULT NULL,
+  PostalCode varchar(15) DEFAULT NULL,
+  SpatialLocation longblob,
+  rowguid longtext,
+  ModifiedDate timestamp NULL DEFAULT NULL
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `person.addresstype`
 --
 
-DROP TABLE IF EXISTS `person.addresstype`;
+DROP TABLE IF EXISTS "person.addresstype";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `person.addresstype` (
-  `AddressTypeID` int DEFAULT NULL,
-  `Name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `rowguid` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
-  `ModifiedDate` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE "person.addresstype" (
+  AddressTypeID int DEFAULT NULL,
+  Name varchar(50) DEFAULT NULL,
+  rowguid longtext ,
+  ModifiedDate timestamp NULL DEFAULT NULL
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `person.businessentity`
 --
 
-DROP TABLE IF EXISTS `person.businessentity`;
+DROP TABLE IF EXISTS "person.businessentity";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `person.businessentity` (
-  `BusinessEntityID` int DEFAULT NULL,
-  `rowguid` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
-  `ModifiedDate` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE "person.businessentity" (
+  BusinessEntityID int DEFAULT NULL,
+  rowguid longtext ,
+  ModifiedDate timestamp NULL DEFAULT NULL
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `person.businessentityaddress`
 --
 
-DROP TABLE IF EXISTS `person.businessentityaddress`;
+DROP TABLE IF EXISTS "person.businessentityaddress";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `person.businessentityaddress` (
-  `BusinessEntityID` int DEFAULT NULL,
-  `AddressID` int DEFAULT NULL,
-  `AddressTypeID` int DEFAULT NULL,
-  `rowguid` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
-  `ModifiedDate` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE "person.businessentityaddress" (
+  BusinessEntityID int DEFAULT NULL,
+  AddressID int DEFAULT NULL,
+  AddressTypeID int DEFAULT NULL,
+  rowguid longtext ,
+  ModifiedDate timestamp NULL DEFAULT NULL
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `person.businessentitycontact`
 --
 
-DROP TABLE IF EXISTS `person.businessentitycontact`;
+DROP TABLE IF EXISTS "person.businessentitycontact";
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `person.businessentitycontact` (
-  `BusinessEntityID` int DEFAULT NULL,
+CREATE TABLE "person.businessentitycontact" (
+  "BusinessEntityID" int DEFAULT NULL,
   `PersonID` int DEFAULT NULL,
   `ContactTypeID` int DEFAULT NULL,
   `rowguid` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
@@ -305,7 +305,7 @@ CREATE TABLE `person.person` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `person.personphone`
+-- Table structure for table "person.personphone"
 --
 
 DROP TABLE IF EXISTS `person.personphone`;
