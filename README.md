@@ -1,4 +1,4 @@
-# mysql_to_postgresql
+# adventureworks in mysql and postgresql
 
 ### 导出 mysql 数据
 mysql -uuser -ppassword  adventureworks -e "select * from `humanresources.department`;" | sed 's/\t/","/g;s/^/"/;s/$/"/;s/\n//g' > department.csv
