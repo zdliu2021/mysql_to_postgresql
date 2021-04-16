@@ -2,7 +2,7 @@
 
 select * 
 
-from Production.Product
+from Product
 
 order by Name asc;
 
@@ -12,15 +12,15 @@ order by Name asc;
 
 (2)查出每种产品的销售总额和折扣总额。涉及表：Product、SalesOrderDetail，按产品名升序排列。共三列。必须使用join
 
-select * from Production.Product
+select * from Product
 
 order by Name asc;
 
 select Name 产品,LineTotal 销售总额,OrderQty*UnitPriceDiscount 折扣总额
 
-from [Production].[Product] join [Sales].[SalesOrderDetail]
+from Product join SalesOrderDetail
 
-on [Production].[Product].[ProductID]=[Sales].[SalesOrderDetail].[ProductID]
+on Product.ProductID=SalesOrderDetail.ProductID
 
 order by Name asc
 
@@ -34,23 +34,23 @@ order by Name asc
 
 select Product.Name 
 
-from [Production].[Product]
+from Product
 
-where exists(select Production.ProductModel.ProductModelID 
+where exists(select ProductModel.ProductModelID 
 
-from .[Production].[ProductModel] 
+from ProductModel 
 
-where [ProductModel].Name='Long-Sleeve Logo Jersey'
+where ProductModel.Name='Long-Sleeve Logo Jersey'
 
-and Production.ProductModel.ProductModelID=Production.Product.ProductModelID)
+and ProductModel.ProductModelID=Product.ProductModelID
 
 
 
 (4)查出每种产品类型均价等于该类产品最高标价的产品类型号。涉及表：Product。GROUP BY、子查询。
 
-select Product.ProductModelID, MAX(ListPrice)
+select ProductModelID, MAX(ListPrice)
 
-from [Production].[Product]
+from Product
 
 group by Product.ProductModelID
 
@@ -62,9 +62,9 @@ having  MAX(ListPrice)=avg(ListPrice)
 
 (5)查出每个销售订单的销售总额。两列：订单号、销售总额。涉及表：SalesOrderDetail。
 
-select Sales.SalesOrderDetail.SalesOrderID as 订单号,sum(LineTotal) as 销售总额
+select SalesOrderDetail.SalesOrderID as 订单号,sum(LineTotal) as 销售总额
 
-from [Sales].[SalesOrderDetail]
+from SalesOrderDetail
 
 group by SalesOrderDetail.SalesOrderID
 
@@ -74,11 +74,11 @@ group by SalesOrderDetail.SalesOrderID
 
 (6)查出标价大于$1000的产品，求出这些产品的均价并按类型号分组。涉及表：Product。
 
-select Production.Product.ProductModelID,
+select Product.ProductModelID,
 
 avg(ListPrice)
 
-from [Production].[Product]
+from Product
 
 where ListPrice>1000
 
@@ -92,7 +92,7 @@ select SalesOrderDetail.ProductID,
 
 sum(OrderQty)
 
-from [Sales].[SalesOrderDetail]
+from SalesOrderDetail
 
 group by SalesOrderDetail.ProductID
 
@@ -108,7 +108,7 @@ select SalesOrderDetail.ProductID ID,
 
 avg(UnitPrice) 均价,sum(LineTotal) 总销售额
 
-from [Sales].[SalesOrderDetail]
+from SalesOrderDetail
 
 group by SalesOrderDetail.ProductID
 
@@ -130,9 +130,9 @@ NonDiscountSales = (OrderQty * UnitPrice),
 
 Discounts = ((OrderQty * UnitPrice) * UnitPriceDiscount)
 
-FROM Production.Product AS p 
+FROM Product AS p 
 
-INNER JOIN Sales.SalesOrderDetail AS sod
+INNER JOIN SalesOrderDetail AS sod
 
 ON p.ProductID = sod.ProductID 
 
@@ -144,7 +144,7 @@ ORDER BY ProductName DESC;
 
 SELECT ProductID, Name
 
-FROM Production.Product
+FROM Product
 
 WHERE Name LIKE 'Chain%'; 
 
@@ -156,7 +156,7 @@ name
 
 SELECT BusinessEntityID, FirstName, MiddleName, LastName
 
-FROM Person.Person
+FROM Person
 
 WHERE MiddleName LIKE '[E,B]'; 
 
@@ -164,7 +164,7 @@ WHERE MiddleName LIKE '[E,B]';
 
 SELECT SalesOrderID, OrderDate, TotalDue
 
-FROM Sales.SalesOrderHeader
+FROM SalesOrderHeader
 
 WHERE OrderDate BETWEEN '2011-09-01' AND '2011-09-30'
 
@@ -176,7 +176,7 @@ WHERE OrderDate BETWEEN '2011-09-01' AND '2011-09-30'
 
 SELECT ProductID, Name, Color
 
-FROM Production.Product
+FROM Product
 
 WHERE Color IS NULL; 
 
@@ -190,9 +190,9 @@ column.
 
 SELECT SalesOrderID, P.ProductID, P.Name
 
-FROM Production.Product AS P
+FROM Product AS P
 
-LEFT OUTER JOIN Sales.SalesOrderDetail
+LEFT OUTER JOIN SalesOrderDetail
 
  AS SOD ON P.ProductID = SOD.ProductID; 
 
@@ -204,7 +204,7 @@ TerritoryID values per customer.
 
 SELECT COUNT(DISTINCT TerritoryID) AS CountOfTerritoryID, CustomerID
 
-FROM Sales.SalesOrderHeader
+FROM SalesOrderHeader
 
 GROUP BY CustomerID; 
 
@@ -218,13 +218,13 @@ Production.Product tables to display the total sum of products by ProductID and 
 
 SELECT SUM(OrderQty) SumOfOrderQty, P.ProductID, SOH.OrderDate
 
-FROM Sales.SalesOrderHeader AS SOH
+FROM SalesOrderHeader AS SOH
 
-INNER JOIN Sales.SalesOrderDetail AS SOD
+INNER JOIN SalesOrderDetail AS SOD
 
  ON SOH.SalesOrderID = SOD.SalesOrderDetailID
 
-INNER JOIN Production.Product AS P ON SOD.ProductID = P.ProductID
+INNER JOIN Product AS P ON SOD.ProductID = P.ProductID
 
 GROUP BY P.ProductID, SOH.OrderDate; 
 
@@ -242,15 +242,15 @@ JobTitle along with a count of employees for the title. Use a derived table to s
 
 SELECT FirstName, LastName, e.JobTitle, HireDate, CountOfTitle
 
-FROM HumanResources.Employee AS e
+FROM Employee AS e
 
-INNER JOIN Person.Person AS p ON e.BusinessEntityID = p.BusinessEntityID
+INNER JOIN Person AS p ON e.BusinessEntityID = p.BusinessEntityID
 
 INNER JOIN (
 
  SELECT COUNT(*) AS CountOfTitle, JobTitle
 
- FROM HumanResources.Employee
+ FROM Employee
 
  GROUP BY JobTitle) AS j ON e.JobTitle = j.JobTitle; 
 
@@ -260,13 +260,13 @@ INNER JOIN (
 
 SELECT CustomerID, SalesOrderID, OrderDate
 
-FROM Sales.SalesOrderHeader
+FROM SalesOrderHeader
 
 WHERE CustomerID IN
 
  (SELECT CustomerID
 
- FROM Sales.SalesOrderHeader
+ FROM SalesOrderHeader
 
  GROUP BY CustomerID
 
