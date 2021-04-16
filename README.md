@@ -13,4 +13,4 @@
 create database adventureworks;
 
 2、导入数据库
-psql -U postgres -d adventureworks -f "Path/adventureworks.sql"
+psql -U postgres -d adventureworks -f "Path/adventureworks_postgresql.sql"
