@@ -2,7 +2,7 @@
 
 select * 
 
-from Product
+from product
 
 order by Name asc;
 
@@ -12,15 +12,15 @@ order by Name asc;
 
 (2)查出每种产品的销售总额和折扣总额。涉及表：Product、SalesOrderDetail，按产品名升序排列。共三列。必须使用join
 
-select * from Product
+select * from product
 
 order by Name asc;
 
 select Name 产品,LineTotal 销售总额,OrderQty*UnitPriceDiscount 折扣总额
 
-from Product join SalesOrderDetail
+from product join salesorderdetail
 
-on Product.ProductID=SalesOrderDetail.ProductID
+on product.ProductID=salesorderdetail.ProductID
 
 order by Name asc
 
@@ -32,17 +32,15 @@ order by Name asc
 
 一列。使用EXISTS和IN两种方法完成。
 
-select Product.Name 
+select product.Name 
 
-from Product
+from product
 
-where exists(select ProductModel.ProductModelID 
+where exists(select productmodel.ProductModelID 
 
-from ProductModel 
+from productmodel 
 
-where ProductModel.Name='Long-Sleeve Logo Jersey'
-
-and ProductModel.ProductModelID=Product.ProductModelID
+where productmodel.Name="Long-Sleeve Logo Jersey" and productmodel.ProductModelID=product.ProductModelID);
 
 
 
