@@ -4,10 +4,13 @@
 链接: https://pan.baidu.com/s/1U23Kd_ZrUkL1uZXDTQ8BRg 提取码: yj4e 复制这段内容后打开百度网盘手机App，操作更方便哦
 
 
-### 导出 mysql 数据
+### 将adventureworks导入mysql
+1. mysql -u root -p
+2. create database adventureworks;
+3. use adventureworks;
+4. source /path/adventureworks_mysql.sql
 
-
-### 将adventureworks导入adventureworks
+### 将adventureworks导入postgresql
 
 1、在postgresql 中新建数据库
 create database adventureworks;
