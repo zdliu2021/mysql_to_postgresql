@@ -3,6 +3,7 @@
 ### 下载数据
 链接: https://pan.baidu.com/s/1U23Kd_ZrUkL1uZXDTQ8BRg 提取码: yj4e 复制这段内容后打开百度网盘手机App，操作更方便哦
 
+链接: https://pan.baidu.com/s/1JEe5XQt3OXO7W6JsglK9-A 提取码: euap 复制这段内容后打开百度网盘手机App，操作更方便哦
 
 ### 将adventureworks导入mysql
 1. mysql -u root -p
