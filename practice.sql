@@ -138,7 +138,7 @@ ORDER BY ProductName DESC;
 
 
 
-(10)查询所有名字以“Chain”开头的ProductID,name（Production.Product）
+(10)查询所有名字以“Chain”开头的ProductID,name（Product）
 
 SELECT ProductID, Name
 
@@ -158,7 +158,7 @@ FROM Person
 
 WHERE MiddleName LIKE '[E,B]'; 
 
-(12)查询在2011-09-01和2011-09-30之间并且TotalDue超过1000的orderID,orderdata,TotalDue（Sales.SalesOrderHeader）
+(12)查询在2011-09-01和2011-09-30之间并且TotalDue超过1000的orderID,orderdata,TotalDue（SalesOrderHeader）
 
 SELECT SalesOrderID, OrderDate, TotalDue
 
@@ -170,7 +170,7 @@ WHERE OrderDate BETWEEN '2011-09-01' AND '2011-09-30'
 
 
 
-(13)查询出color为空的ProductID,Name,Color（Production.Product）
+(13)查询出color为空的ProductID,Name,Color（Product）
 
 SELECT ProductID, Name, Color
 
@@ -180,9 +180,9 @@ WHERE Color IS NULL;
 
 
 
-(15). Write a query that displays all the products along with the SalesOrderID even if an order has never
+(14). Write a query that displays all the products along with the SalesOrderID even if an order has never
 
-been placed for that product. Join to the Sales.SalesOrderDetail table using the ProductID
+been placed for that product. Join to the SalesOrderDetail table using the ProductID
 
 column. 
 
@@ -196,7 +196,7 @@ LEFT OUTER JOIN SalesOrderDetail
 
 
 
-(16)Write a query using the Sales.SalesOrderHeader table that returns the count of unique
+(15)Write a query using the SalesOrderHeader table that returns the count of unique
 
 TerritoryID values per customer.
 
@@ -208,9 +208,9 @@ GROUP BY CustomerID;
 
 
 
-(17)Write a query using the Sales.SalesOrderHeader, Sales.SalesOrderDetail, and
+(16)Write a query using the SalesOrderHeader, SalesOrderDetail, and
 
-Production.Product tables to display the total sum of products by ProductID and OrderDate.
+Product tables to display the total sum of products by ProductID and OrderDate.
 
 
 
@@ -230,7 +230,7 @@ GROUP BY P.ProductID, SOH.OrderDate;
 
 
 
-(18) Write a query that joins the HumanResources.Employee table to the Person.Person table so that you
+(17) Write a query that joins the Employee table to the Person table so that you
 
 can display the FirstName, LastName, and HireDate columns for each employee. Display the
 
@@ -254,7 +254,7 @@ INNER JOIN (
 
 
 
-(20) 查询出至少有五笔订单的顾客的CustomerID,SalesOrderID,orderData（Sales.SalesOrderHeader）
+(18) 查询出至少有五笔订单的顾客的CustomerID,SalesOrderID,orderData（SalesOrderHeader）
 
 SELECT CustomerID, SalesOrderID, OrderDate
 
