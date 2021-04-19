@@ -110,7 +110,7 @@ INNER JOIN salesorderdetail AS sod
 
 ON p.ProductID = sod.ProductID 
 
-ORDER BY ProductName DESC;
+ORDER BY Name DESC;
 
 
 
