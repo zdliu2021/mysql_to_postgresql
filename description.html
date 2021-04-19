@@ -1,1 +1,15 @@
 <h>这是一个自行车制造和销售公司的数据库，该公司建立自己的销售网站，提供在线销售。</h>
+由于adventureworks数据库所含表的类型过多，这里只介绍题目中涉及到了表及字段。
+
+关于该数据库可以参考：http://www.uml.org.cn/sjjm/201905103.asp
+
+product(ProductID,Name,ProductModelID,ListPrice)
+person(FirstName,MiddleName,LastName)
+salesorderdetail(SalesOrderID,SalesOrderDetailID,OrderQty,ProductID,UnitPrice,UnitPriceDiscount,LineTotal)
+
+
+product:产品ID,产品名字，产品类型ID(不同的产品ID可能具有相同的产品类型ID),产品标价
+person:姓名
+salesorderdetail:这笔订单的ID(不是主键，可能有ID相同的记录)，订单详细ID,订单涉及的产品数量，产品ID，单元价格，单元价格折扣，销售总额
+
+注意：每个产品的没有打折之前的销售总额=OrderQty*UnitPrice,打折之后的销售总额=OrderQty*UnitPrice*UnitPriceDiscount
