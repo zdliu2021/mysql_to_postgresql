@@ -1,10 +1,10 @@
 (1)在Product表中查出所有产品信息（列：Name, ProductNumber, ListPrice），按产品名升序排列。
 
-select * 
+select "Name","ProductNumber","ListPrice"
 
 from product
 
-order by Name asc;
+order by product."Name" asc;
 
 
 
