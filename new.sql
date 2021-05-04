@@ -40,4 +40,4 @@ group by SalesPersonID) Temp join businessentityaddress join address
 where Temp.SalesPersonID=businessentityaddress.BusinessEntityID 
 and businessentityaddress.AddressID=address.AddressID
 group by city
-order by _count desc limit 3; 
+order by _count desc ; 
