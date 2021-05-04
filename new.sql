@@ -23,8 +23,21 @@ salesorderheader:(SalesOrderID,
                  CustomerID,
                  SalesPersonID,
                  )
-select SalesPersonID
+businessentityaddress:(BusinessEntityID,
+                      AddressID,
+                      AddressTypeID,
+                      )
+address:(AddressID,
+        city)
+        
+3.
+
+select SalesPersonID,city
+from (select SalesPersonID,sum(LineTotal) as _count
 from salesorderheader join salesorderdetail
 where salesorderdetail.SalesOrderID=salesorderheader.SalesOrderID
-group by SalesPersonID
-by 
+group by SalesOrderPerson) Temp join businessentityaddress join address 
+where Temp.SalesPersonID=businessenetityaddress.BusinessEntityID 
+and businessentityaddress.AddressID=address.AddressID
+group by city
+order by _count desc limit 3; 
