@@ -48,5 +48,14 @@ select city,SalesPersonID
 from temp_1 a
 where (select count(1) from temp_1 b where a.city=b.city and a._count<b._count )<3;
 
+4、找出至少交易过四次的顾客，输出这些顾客对应的订单信息。涉及表(SalesOrderHeader),输出格式为(CustomerID,SalesOrderID,OrderDate)
+
+SELECT CustomerID, SalesOrderID, OrderDate
+FROM salesorderheader 
+WHERE CustomerID IN     
+(SELECT CustomerID     
+FROM salesorderheader     
+GROUP BY CustomerID    
+HAVING COUNT(*) > 4);
 
 
